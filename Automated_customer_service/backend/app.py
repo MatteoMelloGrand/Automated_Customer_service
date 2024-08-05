@@ -5,32 +5,40 @@ Created on Fri Aug  2 15:57:07 2024
 @author: lenovo
 """
 
-import replicate
-import Front
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # For handling CORS
+from groq import Groq # type: ignore
+from flask import Flask, request, jsonify # type: ignore
+from flask_cors import CORS  # type: ignore # For handling CORS
 import os
 
 
 app = Flask(__name__)
 CORS(app)  # Allow Cross-Origin requests
 
-API_TOKEN = "your_API_token" #?
+#API_TOKEN = "your_API_token" #?
 
 @app.route('/chat', methods = ['POST'])
 def chat():
     input_data = request.json
     input_message = input_data.get('message', '')
     with open('Input_LLM.txt','a+') as file: #reading the file and adding the question
-        file.write(f"Reply to the following client message: {input1}\n")
+        file.write(f"Reply to the following client message: {input_message}\n")
         file.seek(0)
         content = file.read() #creating a variable with the text
 
-    client = replicate.Client(token="your_API_token") #creation of the variable containing the token
+    client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
     try:
-        response = client.models.get("meta/meta-llama-3-70b-instruct").predict(prompt=content) #creation of the response
-
-        output = response.get("output", "")
+        chat_completion = client.chat.completions.create( 
+        messages=[
+            {
+                "role": "user",
+                "content": f"{content}",
+            }
+        ],
+        model="llama3-groq-70b-8192",
+        )
+        output = chat_completion.choices[0].message.content
         if output.endswith("..."):
             print("Response incomplete. Notifying customer service.")
 
