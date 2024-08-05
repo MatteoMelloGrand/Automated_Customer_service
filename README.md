@@ -11,8 +11,8 @@ For the large language model: GOT-3/Llama 3.1
 For the deployment of the project: Heroku
 
 # How the automated service is set
-The way of how I decided to set the system is the following:
-SUppose that a client asks a question to the customer service, the question is then inserted in a pre-built document which tells exactly to the LLM all the details about the product that is being sold and how to repply to the questions.
+The way of how I decided to set the system is the following
+Suppose that a client asks a question to the customer service, the question is then inserted in a pre-built document which tells exactly to the LLM all the details about the product that is being sold and how to reply to the questions.
 The informations contained in the document are:
 1) Dimensions, weight, and specifics about the product
 2) Price of the product and of bundles, disocunts...
