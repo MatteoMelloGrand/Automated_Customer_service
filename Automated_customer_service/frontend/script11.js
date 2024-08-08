@@ -40,4 +40,3 @@ function displayMessage(sender, message) {
     chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
 }
 
-
