@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
 Created on Fri Aug  2 15:57:07 2024
 
 @author: lenovo
