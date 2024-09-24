@@ -5,17 +5,16 @@ The idea of this project is to evaluate the limits of application of large langu
 
 # Technologies used
 The technologies used in the project are:\
-For front-end: HTML, CSS\
+For front-end: HTML, CSS, Javascript\
 For back-end: Python, Flask\
-For the large language model: GOT-3/Llama 3.1
-For the deployment of the project: Heroku
+For the large language model: Llama 3.1
 
 # How the automated service is set
-The way of how I decided to set the system is the following
+The way of how I decided to set the system is the following:
 Suppose that a client asks a question to the customer service, the question is then inserted in a pre-built document which tells exactly to the LLM all the details about the product that is being sold and how to reply to the questions.
 The informations contained in the document are:
 1) Dimensions, weight, and specifics about the product
-2) Price of the product and of bundles, disocunts...
+2) Price of the product and of bundles, discounts...
 3) List of the products in sale
 4) Refund policies
 5) Shipping details (timings, prices...)
@@ -34,6 +33,6 @@ In this way, the system should be able to reply correctly to most of the questio
 # Limits encountered
 The limits encountered in the development of the project are the following:
 1) Decision making\
-   for some actions, such as determining wheter giving a refund or not, it is better the intervention of a human. Indeed, both for a technical and a strategic reason, the LLM is not still able to perform refunds and it has not enough instruments to evaluate wheter a refund inquiry is a fraud or not.
+   for some actions, such as determining wheter giving a refund or not, it is better the intervention of a human. Indeed, considering the example of the refund,  the LLM is not still able to evaluate wheter a refund inquiry is a fraud or not.
 2) Health/sensitive informations\
    Some products, such as food, can cause serious health problems if in presence of an allergy. Therefore, a common question to the customer service could be if the product is suggested to people with a certain patology or allergy. Giving to the LLM the total responsability for deciding wheter a product is suitable or not is too risky. Suppose for example that a celiac man asks to the LLM if a certain food sold in the ecommerce can be eaten by celiacs. If the LLM reply that it is, then the man could have serious health problems.
