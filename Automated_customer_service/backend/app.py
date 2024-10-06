@@ -5,15 +5,12 @@ Created on Fri Aug  2 15:57:07 2024
 
 from groq import Groq # type: ignore
 from flask import Flask, request, jsonify # type: ignore
-from flask_cors import CORS  # type: ignore # For handling CORS
+from flask_cors import CORS  # For handling CORS
 import os
-
 
 app = Flask(__name__)
 #CORS(app)  # Allow Cross-Origin requests
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-
-#API_TOKEN = "your_API_token" #?
 
 @app.route('/chat', methods = ['GET', 'POST'])
 def chat():
@@ -28,7 +25,6 @@ def chat():
     client = Groq(
     api_key="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",
 )
-
 
     try:
 
@@ -45,7 +41,6 @@ def chat():
         if output.endswith("..."):
             print("Response incomplete. Notifying customer service.")
         
-
 
         return jsonify({'response': output})
             #write an email to the customer service with the question saying to enter the platform and reply as soon as possible
